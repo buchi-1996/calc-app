@@ -6,13 +6,12 @@
 
 body{
     min-height: 100vh;
-    min-height: -webkit-fill-available;
 }
 
 .js-calc{
    box-shadow: 0 0 1em #ccc;
-   min-height: 100vh;
-   ;
+   height: 100vh;
+   
 }
 
 .screen-display{
