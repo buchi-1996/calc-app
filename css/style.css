@@ -11,7 +11,7 @@ body{
 
 .js-calc{
    box-shadow: 0 0 1em #ccc;
-   height: 100vh;
+   min-height: 100vh;
    ;
 }
 
