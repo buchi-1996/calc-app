@@ -21,18 +21,26 @@ body{
     flex-direction: column;
     align-items: flex-end;
     padding: 7px 10px;
+    line-height: 1;
+    overflow: hidden;
+    
 }
 
 .output-1{
     color: #444;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 60px;
+    /* border: 1px solid #000; */
+    
 }
 
 .output-2{
-    font-size: 18px;
-    color: #777;
+    font-size: 30px;
+    color: #aaa;
     font-weight: 500;
+    padding-right: 5px;
+    /* border: 1px solid #000; */
+
+    
 }
 .calc-btn{
     background: #444;
@@ -47,6 +55,7 @@ body{
     border: none;
     background: #444;
     color: #fff;
+    
     
 }
 
