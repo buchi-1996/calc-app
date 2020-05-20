@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 
-body{
-    /* min-height: 100vh; */
+html, body{
+    min-height: 100vh;
     background: #000;
 }
 
