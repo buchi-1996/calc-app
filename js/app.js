@@ -40,6 +40,7 @@ class UI {
         arr.pop();
         let newOutput = this.output1.textContent = arr.join('');
         this.output2.textContent = eval(newOutput)
+        this.output1.style.fontSize = '60px';
         
       })
     }

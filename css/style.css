@@ -5,7 +5,8 @@
 }
 
 body{
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    background: #000;
 }
 
 .js-calc{
@@ -23,13 +24,13 @@ body{
     padding: 7px 10px;
     line-height: 1;
     overflow: hidden;
+    background: #000;
     
 }
 
 .output-1{
-    color: #444;
+    color: #ccc;
     font-size: 60px;
-    /* border: 1px solid #000; */
     
 }
 
@@ -38,7 +39,6 @@ body{
     color: #aaa;
     font-weight: 500;
     padding-right: 5px;
-    /* border: 1px solid #000; */
 
     
 }
@@ -50,14 +50,12 @@ body{
 .my-btn{
     padding: 32px;
     font-size: 23px;
-    /* font-weight: bold; */
-    /* border-radius: 50%; */
     border: none;
     background: #444;
     color: #fff;
-    
-    
+    cursor: pointer;  
 }
+
 
 .my-btn:focus{
     outline: none;
@@ -72,4 +70,14 @@ body{
 .black{
     background-color: #222;
     border-radius: none;
+    color: darkorange;
+    font-weight: bold;
+}
+
+
+
+@media screen and (max-width: 667px){
+    .js-calc{
+        max-height: 100;
+    }
 }
