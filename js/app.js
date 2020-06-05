@@ -7,81 +7,80 @@ class UI {
         this.clearOne = document.getElementById('clear');
         this.equals = document.getElementById('equals');
         this.percentage = document.getElementById('percent');
+        this.divide = '\xF7';
+        this.multiply = '\xD7';
+        this.minus = '\u2212';
+        this.plus = '\x2b';
+    }
+
+    
+
+    addText(item){
+        if(item.hasAttribute('data-action')){
+            let data = item.dataset.action;
+            this.output1.textContent += data;
+        }
 
     }
 
-    addNumToDisplay(){
-        // let self = this;
-        this.btn.forEach((singleBtn) =>{
-            singleBtn.addEventListener('click', () =>{
-                if(singleBtn.hasAttribute('data-num')){
-                    let content = singleBtn.getAttribute('data-num');
-                    let newOutput =  this.output1.textContent += content;
-                     this.output2.textContent = eval(newOutput)
-                }
-            })
-        })
-    }
-
-    clearAll(){
-        this.clearAllInput.addEventListener('click', () => {
+    clearDisplay(item){
+        if(item.classList.contains('clear-all')){
             this.output1.textContent = '';
             this.output2.textContent = '';
-            this.output1.style.fontSize = '60px';
-
-        })
+        }
     }
 
-    backSpace(){
-        this.clearOne.addEventListener('click', () => {
-        let content =  this.output1.textContent;
-        let arr = content.split('');
-        console.log(content);
-        arr.pop();
-        let newOutput = this.output1.textContent = arr.join('');
-        this.output2.textContent = eval(newOutput)
-        this.output1.style.fontSize = '60px';
+    backSpace(item){
+        if(item.classList.contains('clear')){
+            let text = this.output1.textContent;
+           let arr = text.split('');
+            arr.pop();
+            this.output1.textContent = arr.join('');
+        }
+    }
+
+    calculate(){
+        let arr = this.output1.textContent;
+        if(arr.includes(this.divide)){
+            let result = arr.split(this.divide).map(x => +x).reduce((a, b) => a / b);
+            this.output1.textContent = result;
+            this.output2.textContent = result;    
+        }
+
+        else if(arr.includes(this.multiply)){
+            let result = arr.split(this.multiply).map(x => +x).reduce((a, b) => a * b);
+            this.output1.textContent = result;
+            this.output2.textContent = result; 
+        }
         
-      })
+        else if(arr.includes(this.minus)){
+            let result = arr.split(this.minus).map(x => +x).reduce((a, b) => a - b);
+            this.output1.textContent = result;
+            this.output2.textContent = result; 
+        }
+
+        else if(arr.includes(this.plus)){
+            let result = arr.split(this.plus).map(x => +x).reduce((a, b) => a + b);
+            this.output1.textContent = result;
+            this.output2.textContent = result;
+        }
     }
 
-    calculatePercent(){
-        this.percentage.addEventListener('click', (e) =>{
-            let percent = '%';
-          if(this.output1.textContent += percent){
-              let result = parseInt(this.output1.textContent) / 100;
-              this.output2.textContent = result;
-          }
-        })
-        
-    }
+}  
 
-    equate(){
-        this.equals.addEventListener('click', ()=> {
-            this.output1.textContent = this.output2.textContent;
-            if(this.output1.textContent.length >= 20){
-                this.output1.style.fontSize = '30px';
-            }
-            else if(this.output1.textContent.length >= 15){
-                this.output1.style.fontSize = '37px';
+   
+document.querySelector('.calc-btn').addEventListener('click', (e) => {
+    let ui = new UI();
+    ui.addText(e.target);
+    ui.clearDisplay(e.target);
+    ui.backSpace(e.target);
+   
+    
+})
 
-            }
 
-            else if(this.output1.textContent.length >= 12){
-                this.output1.style.fontSize = '47px';
+document.getElementById('equals').addEventListener('click', (e) => {
+    let ui = new UI();
+    ui.calculate();
+})
 
-            }
-            else{
-                this.output1.style.fontSize = '60px';
-
-            }
-            this.output2.textContent = '';
-        })
-    }
-}
-let ui = new UI();
-ui.addNumToDisplay();
-ui.clearAll();
-ui.backSpace();
-ui.calculatePercent();
-ui.equate();
